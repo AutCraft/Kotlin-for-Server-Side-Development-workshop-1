@@ -76,4 +76,14 @@ fun main() {
     println("กลุ่มสินค้าที่ราคาไม่เกิน 10000 บาท")
     var productMax = products.filter { it.price > 9999}.forEach { println("\t- ${it.name} (${it.price}บาท)") }
     println("--------------------------------------------------")
+
+}
+fun calculateTotalElectronicsPriceOver500(products: List<Product>): Double {
+    var totalElectronics = products.filter { it.price > 500 && it.category == "Electronics" }.map { it.price }.fold(0.0) { acc, i -> acc + i }
+    return totalElectronics
+}
+fun calculateTotalElectronicsValueOver500(products: List<Product>): Double {
+    var totalElectronics = 0.0
+    var valueElectronics = repeat(products.filter { it.price > 500 && it.category == "Electronics" }.size) { totalElectronics++ }
+    return totalElectronics
 }
